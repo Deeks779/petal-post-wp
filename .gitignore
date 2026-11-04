@@ -1,0 +1,51 @@
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+coverage/
+.vite/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Local development
+.DS_Store
+Thumbs.db
+*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# Personal artwork - DO NOT PUSH
+frontend/public/assets/
+frontend/src/assets/private/
+
+# Image and design source files
+*.psd
+*.ai
+*.kra
+*.procreate
+*.xcf
+*.blend
+*.fig
+*.png
+*.jpg
+
+# Local backups
+*.bak
+*.tmp
+*.orig
