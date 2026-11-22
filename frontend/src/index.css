@@ -1,0 +1,50 @@
+
+@import "tailwindcss";
+
+@theme {
+  /* Primary palette */
+  --color-peacock-indigo: #4D5284;
+  --color-peacock-blue: #4E9CEB;
+  --color-peacock-teal: #70D6C5;
+
+  /* Botanical palette */
+  --color-sage: #CAE5BC;
+  --color-pale-green: #E1EDD4;
+
+  /* Background and text */
+  --color-cream: #F7F9F4;
+  --color-dark-text: #34364F;
+
+  /* Decorative accents */
+  --color-melon: #E5A9A9;
+  --color-cupid-pink: #E6748E;
+}
+
+:root {
+  font-family: Inter, sans-serif;
+  color: var(--color-dark-text);
+  background: var(--color-cream);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
