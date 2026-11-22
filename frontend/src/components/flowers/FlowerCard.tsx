@@ -2,7 +2,10 @@
 import { useState } from "react";
 import { Flower2 } from "lucide-react";
 import { motion } from "motion/react";
+
 import type { Flower } from "../../types/flower";
+import { useBouquet } from "../../context/BouquetContext";
+import FlowerCounter from "./FlowerCounter";
 
 interface FlowerCardProps {
   flower: Flower;
@@ -11,6 +14,9 @@ interface FlowerCardProps {
 
 function FlowerCard({ flower, index }: FlowerCardProps) {
   const [imageError, setImageError] = useState(false);
+
+  const { getQuantity, addFlower, removeFlower } = useBouquet();
+  const quantity = getQuantity(flower.id);
 
   return (
     <motion.article
@@ -21,7 +27,6 @@ function FlowerCard({ flower, index }: FlowerCardProps) {
       whileHover={{ y: -6 }}
       className="group overflow-hidden rounded-2xl border border-sage/60 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
     >
-      {/* Flower Artwork */}
       <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-pale-green/50 p-6">
         {!imageError ? (
           <img
@@ -43,14 +48,12 @@ function FlowerCard({ flower, index }: FlowerCardProps) {
         </span>
       </div>
 
-      {/* Flower Information */}
       <div className="p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h3 className="text-lg font-semibold text-peacock-indigo">
               {flower.name}
             </h3>
-
             <p className="mt-1 text-sm text-dark-text/60">
               {flower.meaning}
             </p>
@@ -65,14 +68,16 @@ function FlowerCard({ flower, index }: FlowerCardProps) {
           {flower.description}
         </p>
 
-        <div className="mt-4 flex items-center justify-between border-t border-sage/50 pt-4">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-sage/50 pt-4">
           <span className="text-xs font-medium uppercase tracking-wider text-peacock-teal">
             {flower.category}
           </span>
 
-          <span className="text-xs font-medium text-peacock-indigo">
-            Add in next step →
-          </span>
+          <FlowerCounter
+            quantity={quantity}
+            onIncrease={() => addFlower(flower.id)}
+            onDecrease={() => removeFlower(flower.id)}
+          />
         </div>
       </div>
     </motion.article>

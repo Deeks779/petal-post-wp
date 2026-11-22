@@ -1,7 +1,10 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { flowers } from "../../data/flowers";
 import type { FlowerCategory } from "../../types/flower";
+import { useBouquet } from "../../context/BouquetContext";
 import FlowerCard from "./FlowerCard";
 
 type FilterCategory = "all" | FlowerCategory;
@@ -18,19 +21,19 @@ function FlowerShelf() {
   const [activeFilter, setActiveFilter] =
     useState<FilterCategory>("all");
 
+  const { totalItems, totalPrice } = useBouquet();
+  const navigate = useNavigate();
+
   const filteredFlowers =
     activeFilter === "all"
       ? flowers
-      : flowers.filter(
-          (flower) => flower.category === activeFilter
-        );
+      : flowers.filter((flower) => flower.category === activeFilter);
 
   return (
     <section
       id="flowers"
       className="mx-auto max-w-7xl px-6 py-20 md:px-12 lg:py-24"
     >
-      {/* Section Heading */}
       <div className="text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-peacock-teal">
           Our little collection
@@ -46,7 +49,6 @@ function FlowerShelf() {
         </p>
       </div>
 
-      {/* Category Filters */}
       <div className="mt-10 flex flex-wrap justify-center gap-3">
         {filters.map((filter) => {
           const isActive = activeFilter === filter.value;
@@ -69,7 +71,6 @@ function FlowerShelf() {
         })}
       </div>
 
-      {/* Flower Count */}
       <div className="mt-10 flex items-center justify-between">
         <p className="text-sm text-dark-text/60">
           Showing {filteredFlowers.length} flowers
@@ -80,7 +81,6 @@ function FlowerShelf() {
         </p>
       </div>
 
-      {/* Flower Grid */}
       <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filteredFlowers.map((flower, index) => (
           <FlowerCard
@@ -91,12 +91,37 @@ function FlowerShelf() {
         ))}
       </div>
 
-      {/* Empty State */}
       {filteredFlowers.length === 0 && (
         <div className="py-16 text-center text-dark-text/60">
           No flowers found in this category.
         </div>
       )}
+
+      {/* Bouquet selection summary */}
+      <div className="mt-12 flex flex-col gap-5 rounded-2xl border border-sage bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm text-dark-text/60">
+            Your bouquet so far
+          </p>
+
+          <p className="mt-1 text-xl font-semibold text-peacock-indigo">
+            {totalItems} {totalItems === 1 ? "flower" : "flowers"} selected
+          </p>
+
+          <p className="mt-1 text-sm text-dark-text/70">
+            Estimated total: ₹{totalPrice}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          disabled={totalItems === 0}
+          onClick={() => navigate("/bouquet-builder")}
+          className="rounded-full bg-peacock-indigo px-7 py-3 text-sm font-semibold text-white transition hover:bg-peacock-indigo/90 disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          Continue to bouquet builder →
+        </button>
+      </div>
     </section>
   );
 }
