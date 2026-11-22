@@ -10,7 +10,7 @@ export const flowers: Flower[] = [
     description:
       "A delicate flower that expresses affection and appreciation.",
     price: 80,
-    image: "/flowers/pink-garden-rose.png",
+    image: "src/assets/flowers/close_up/pink-garden-rose.png",
     category: "romantic",
   },
   {
@@ -21,7 +21,7 @@ export const flowers: Flower[] = [
     description:
       "A cheerful bloom that brings warmth and sunshine.",
     price: 60,
-    image: "/flowers/yellow-ranunculus.png",
+    image: "src/assets/flowers/close_up/yellow-ranunculus.png",
     category: "cheerful",
   },
   {
@@ -32,7 +32,7 @@ export const flowers: Flower[] = [
     description:
       "An elegant bloom with a vibrant and charming personality.",
     price: 60,
-    image: "/flowers/raspberry-tulip.png",
+    image: "src/assets/flowers/close_up/raspberry-tulip.png",
     category: "romantic",
   },
   {
@@ -43,7 +43,7 @@ export const flowers: Flower[] = [
     description:
       "A graceful flower representing simplicity and harmony.",
     price: 50,
-    image: "/flowers/ivory-cosmos.png",
+    image: "src/assets/flowers/close_up/ivory-cosmos.png",
     category: "elegant",
   },
   {
@@ -54,7 +54,7 @@ export const flowers: Flower[] = [
     description:
       "A soft and delicate flower with a dreamy appearance.",
     price: 50,
-    image: "/flowers/lilac-sweet-pea.png",
+    image: "src/assets/flowers/close_up/lilac-sweet-pea.png",
     category: "elegant",
   },
   {
@@ -65,7 +65,7 @@ export const flowers: Flower[] = [
     description:
       "A beautiful bloom that represents encouragement and positivity.",
     price: 70,
-    image: "/flowers/blue-delphinium.png",
+    image: "src/assets/flowers/close_up/blue-delphinium.png",
     category: "cheerful",
   },
 ];
